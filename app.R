@@ -6,7 +6,7 @@ reactlog::reactlog_enable()
 options(shiny.maxRequestSize = 60 * 1024 ^ 2)
 
 ui <- fluidPage(
-  titlePanel("Cálculo de distância"),
+  titlePanel("Cálculo de distância entre pontos"),
   sidebarLayout(
     sidebarPanel(
       fileInput(
@@ -24,8 +24,17 @@ ui <- fluidPage(
       downloadButton("download_csv", label = "Download .csv")
     ),
     mainPanel(
-      h3("Amostra do arquivo:"),
-      tableOutput("sample")
+      tabsetPanel(
+        tabPanel(
+          "Dados",
+          h3("Amostra do arquivo:"),
+          tableOutput("sample")
+        ),
+        tabPanel(
+          "Sobre",
+          includeMarkdown("sobre.md")
+        )
+      )
     )
   )  
 )
