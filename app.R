@@ -69,7 +69,7 @@ server <- function(input, output, session) {
   
   output$sample <- renderTable({
       req(calc_csv())
-      calc_csv() %>% head(n = 10)
+      calc_csv() %>% head(n = 15)
     }
   )
   
